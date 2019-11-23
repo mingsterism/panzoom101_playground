@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./panzoom/dist/panzoom.js"></script>
+    <script src="./jquery.flowchart/jquery.flowchart.js"></script>
+    <style>
+      .container {
+        border: 3px solid yellow;
+        height: 100%;
+        width: 100%;
+      }
+      .panzoom-parent {
+        position: relative;
+        border: 10px solid black;
+        overflow: hidden;
+        height: 80vh;
+      }
+      .elements {
+        width: 10rem;
+        height: 10rem;
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panzoom-parent">
+      <div id="panzoom-element" class="container">
+        <div>
+          <h1>Hello</h1>
+          <h1>Drag the canvas to the left right top and down</h1>
+          <div></div>
+          <span class="elements"></span>
+          <span class="elements"></span>
+          <span class="elements"></span>
+          <span class="elements"></span>
+        </div>
+      </div>
+    </div>
+    <script>
+      const canvas = document.getElementById("panzoom-element");
+      const panzoom = Panzoom(canvas, {
+        startScale: 1.5,
+        maxScale: 5,
+        contain: "outside"
+      });
+      panzoom.pan(10, 10);
+      panzoom.zoom(2, { animate: true });
+
+      // Panning and pinch zooming are bound automatically (unless disablePan is true).
+      // There are several available methods for zooming
+      // that can be bound on button clicks or mousewheel.
+      button.addEventListener("click", panzoom.zoomIn);
+      canvas.parentElement.addEventListener("wheel", panzoom.zoomWithWheel);
+    </script>
+  </body>
+</html>
